@@ -54,7 +54,7 @@ const Footer = () => {
             },
             {
               icon: <FaInstagram />,
-              link: "https://www.facebook.com/profile.php?id=100017160670039",
+              link: "https://www.instagram.com/shakib_kb?utm_source=qr&igsh=MW0zczZ4cHIzbmN4Yg%3D%3D",
             },
           ].map((item, index) => (
             <a

@@ -1,10 +1,12 @@
 // Skills Section Logo's
 import flutter from "./assets/tech_logo/flutter.png";
 import dart from "./assets/tech_logo/dart.png";
+import ads from "./assets/tech_logo/ads.png";
 import getx from "./assets/tech_logo/getx.png";
 import restapi from "./assets/tech_logo/restappi.png";
 import firebase from "./assets/tech_logo/firebase.png";
 import socketio from "./assets/tech_logo/sociket.png";
+import stripe from "./assets/tech_logo/stripe.png";
 import uixi from "./assets/tech_logo/ux-ui-t.png";
 import firebaseLogo from "./assets/tech_logo/firebase.png";
 import gitLogo from "./assets/tech_logo/git.png";
@@ -16,6 +18,7 @@ import figmaLogo from "./assets/tech_logo/figma.png";
 // Experience Section Logo's
 import webverseLogo from "./assets/componylogo.jpeg";
 import newtonschoolLogo from "./assets/critiveit.png";
+import smtLogo from "./assets/smt.jpg";
 
 // Education Section Logo's
 import glaLogo from "./assets/barguna.jpg";
@@ -26,18 +29,20 @@ import githubdetLogo from "./assets/work_logo/wingsblast.jpeg";
 import csprepLogo from "./assets/work_logo/fourproject.jpeg";
 import npmLogo from "./assets/work_logo/thirdproject.jpeg";
 import webverLogo from "./assets/work_logo/abs.jpeg";
+import mentorLogo from "./assets/work_logo/mentor.png";
+import omagaLogo from "./assets/work_logo/omaga.png";
 
 export const SkillsInfo = [
   {
     title: "Flutter Developer",
     skills: [
-      { name: "Flutter", logo: flutter },
       { name: "Dart", logo: dart },
+      { name: "Flutter", logo: flutter },
       { name: "Getx", logo: getx },
       { name: "Rest API", logo: restapi },
       { name: "Firebase", logo: firebase },
       { name: "Socket.io", logo: socketio },
-      { name: "UI/UX Design", logo: uixi },
+      { name: "Stripe", logo: stripe },
     ],
   },
   {
@@ -47,8 +52,8 @@ export const SkillsInfo = [
       { name: "GitHub", logo: githubLogo },
       { name: "VS Code", logo: vscodeLogo },
       { name: "Postman", logo: postmanLogo },
+      { name: "Android Studio", logo: ads },
       { name: "Figma", logo: figmaLogo },
-      { name: "Firebase", logo: firebaseLogo },
     ],
   },
 ];
@@ -58,16 +63,34 @@ export const SkillsInfo = [
 export const experiences = [
   {
     id: 0,
+    img: smtLogo,
+    role: "Junior Flutter Developer",
+    company: "SM Technology",
+    date: "June 2025 - Present",
+    desc: "I am currently working as a Junior App Developer at SM Technology, where I develop mobile applications and gain real-world industry experience. I collaborate with designers and backend developers to build scalable features and ensure smooth user experiences. I also communicate with clients to understand requirements and deliver solutions that align with business goals and product quality.",
+    skills: [
+      "Dart(OOP)",
+      "Flutter",
+      "Getx",
+      "Restful API",
+      "Stripe (payment)",
+      "Socket io / Web Socket",
+      "Google Map",
+      "Push Notification",
+      "Firebase",
+      "UI/UX Design",
+    ],
+  },
+  {
+    id: 1,
     img: webverseLogo,
     role: "Junior Flutter Developer",
     company: "All One Autos",
-    date: "February 2024 - Present",
+    date: "December 2024 - June 2025",
     desc: "As a Junior App Developer, I create mobile apps, collaborate with senior developers, write clean code, participate in code reviews, assist in feature design, and enhance development processes with a focus on user experience and brand consistency.",
     skills: [
-      "Dart",
-      "OOP",
+      "Dart(OOP)",
       "Flutter",
-      "Getx",
       "Restful API",
       "Getx",
       "Firebase",
@@ -101,7 +124,7 @@ export const education = [
     img: glaLogo,
     school: "Barguna Polytechnic Institute, Barguna",
     date: "2019 - 2020",
-    grade: "3.71 CGPA",
+    grade: "3.71 CGPA Out of 4.00",
     desc: "I have completed my studies completely for Diploma Engineering in Computer Technology Barguna Politacnic Institute,Barguna.",
     degree: "Diploma in Computer Technology",
   },
@@ -119,35 +142,35 @@ export const education = [
 export const projects = [
   {
     id: 0,
-    title: "All Business Solutions",
+    title: "MentorU University",
     description:
-      "All Business Solutions is an all-in-one app for managing profits, expenses, employees, and daily business operations—helping you streamline finances and grow your business with ease.",
-    image: webverLogo,
-    link: "https://apps.apple.com/us/app/all-business-solutions/id6738424461",
+      "Developed a scalable mobile application using Flutter and GetX, focused on personal growth, mentorship, and community engagement. Integrated Agora live streaming, along with an interactive social feed featuring posts, likes, and comments. Implemented role-based access to deliver a personalized and dynamic user experience.",
+    image: mentorLogo,
+    link: "https://play.google.com/store/apps/details?id=com.mentoru.university&pcampaignid=web_share",
   },
   {
     id: 1,
+    title: "AlphaPulse Fitness",
+    description:
+      "Developed AlphaPulse Fitness using Flutter and GetX, enabling users to track meals and exercises. Integrated role-based access and WebSocket chat for real-time messaging with mentors. Users can also watch exercise videos and manage their fitness progress efficiently.",
+    image: omagaLogo,
+    link: "https://play.google.com/store/apps/details?id=com.alphapulse.omegavitality&pcampaignid=web_share",
+  },
+  {
+    id: 2,
     title: "WingsBlast",
     description:
       "WingsBlast is a food ordering app designed for a seamless user experience with features like email/password, Google, and Apple login. It allows users to browse the food menu, view item details, add to cart,carry-out and delivery, with location-based services,real-time order tracking and complete checkout using PayPal paymentgetway.",
     image: githubdetLogo,
     link: "https://apps.apple.com/us/app/wingsblast/id6738927180",
   },
-
-  {
-    id: 2,
-    title: "My Choice E-Commerce",
-    description:
-      "This application is built using Flutter with GetX for state management and integrates RESTful APIs for backend communication. It includes user authentication using email and password, task status management (New, In Progress, Completed, Cancelled), and user profile management features like profile viewing, editing, and image uploading.",
-    image: csprepLogo,
-    link: "https://github.com/shakib3444/taskManagement/tree/dev",
-  },
   {
     id: 3,
-    title: "E Commerce:",
+    title: "All Business Solutions",
     description:
-      "This is a modern eCommerce Shoes App built with Flutter and GetX for smooth state management. It features Google Authentication for login/signup, allowing users to browse and view detailed product listings, add items to cart or favorites, and proceed to checkout. The app also includes complete user profile management and an admin interface to add products easily.",
-    image: npmLogo,
-    link: "https://github.com/shakib3444/ecomerce_app/tree/shakib",
+      "All Business Solutions is an all-in-one app for managing profits, expenses, employees, and daily business operations—helping you streamline finances and grow your business with ease.",
+    image: webverLogo,
+    link: "https://apps.apple.com/us/app/all-business-solutions/id6738424461",
   },
+
 ];

@@ -24,7 +24,7 @@ const About = () => {
           <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 text-[#8245ec] leading-tight">
             <span className="text-white">I am a </span>
             <ReactTypingEffect
-              text={["Flatter Developer", "UI/UX Designer", "Coder"]}
+              text={["Flatter Developer", "Mobile App Developer"]}
               speed={100}
               eraseSpeed={50}
               typingDelay={500}
@@ -36,14 +36,11 @@ const About = () => {
           </h3>
           {/* About Me Paragraph */}
           <p className="text-base sm:text-lg md:text-lg text-gray-400 mb-10 mt-8 leading-relaxed">
-            Passionate Flatter Developer with 1+ years of hands-on experience
-            building scalable web applications. Eager to join a dynamic team
-            where I can contribute my expertise, drive innovation, and
-            collaboratively solve challenges with creative solutions.
+            Passionate Flutter Developer with 1+ years of experience building scalable, high-performance mobile applications. Skilled in Flutter, GetX, WebSocket integration, and real-time features, I am eager to contribute to a dynamic team, deliver innovative solutions, and create impactful user experiences through collaborative development.
           </p>
           {/* Resume Button */}
           <a
-            href="https://drive.google.com/file/d/1soBgbvg5MaNfc4MirpeAZFpWccWhPNCS/view?usp=sharing"
+            href="https://drive.google.com/file/d/1o9a3mEHhg4x3KiKfl-G7ttrgdfrAXgxU/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-white py-3 px-8 rounded mt-5 text-lg font-bold transition duration-300 transform hover:scale-105"
