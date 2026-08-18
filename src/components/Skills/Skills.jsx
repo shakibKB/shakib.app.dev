@@ -28,46 +28,44 @@ const Skills = () => {
     </div>
 
     {/* Skill Categories */}
-    <div className="flex flex-wrap gap-1 lg:gap-5 py-10 justify-between">
+    <div className="flex flex-col gap-8 py-10 justify-center items-center">
       {SkillsInfo.map((category) => (
         <div
-          data-aos="zoom-in-up"
+          data-aos="fade-up"
           key={category.title}
-          className="bg-gray-900 backdrop-blur-md px-6 sm:px-10 py-8 sm:py-6 mb-10 w-full sm:w-[48%] rounded-2xl border border-white 
-          shadow-[0_0_20px_1px_rgba(130,69,236,0.3)]"
+          className="bg-gray-900/40 backdrop-blur-md px-4 sm:px-8 py-8 w-full max-w-5xl rounded-3xl border border-gray-700/50 
+          shadow-[0_0_20px_1px_rgba(130,69,236,0.15)] mx-auto"
         >
-          <h3 className="text-2xl sm:text-3xl font-semibold text-gray-400 mb-4 text-center">
+          <h3 className="hidden text-xl sm:text-2xl font-bold text-gray-300 mb-8 text-center tracking-wide">
             {category.title}
           </h3>
-
-          {/* Skill Items - 3 per row on larger screens */}
-          <Tilt
-            key={category.title}
-            tiltMaxAngleX={10}
-            tiltMaxAngleY={10}
-            perspective={1000}
-            scale={1}
-            transitionSpeed={1000}
-            gyroscope={true}
-          >
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
-              {category.skills.map((skill) => (
+          <div className="flex flex-wrap justify-center gap-4">
+            {category.skills.map((skill, index) => (
+              <Tilt
+                key={skill.name}
+                tiltMaxAngleX={15}
+                tiltMaxAngleY={15}
+                perspective={1000}
+                scale={1.05}
+                transitionSpeed={1000}
+                gyroscope={true}
+                className="w-fit"
+              >
                 <div
-                  key={skill.name}
-                  className="flex items-center justify-center space-x-2 bg-transparent border-2 border-gray-700 rounded-full py-2 px-2 sm:py-2 sm:px-2 text-center"
+                  data-aos="zoom-in-up"
+                  data-aos-delay={(index % 10) * 50}
+                  className="w-[100px] h-[110px] sm:w-[120px] sm:h-[125px] bg-[#0a0a0a] border border-gray-800 rounded-2xl flex flex-col items-center justify-center p-3 
+                  hover:border-[#8245ec] hover:shadow-[0_0_15px_1px_rgba(130,69,236,0.4)] transition-all duration-300 group cursor-pointer"
                 >
-                  <img
-                    src={skill.logo}
-                    alt={`${skill.name} logo`}
-                    className="w-6 h-6 sm:w-8 sm:h-8"
-                  />
-                  <span className="text-xs sm:text-sm text-gray-300">
-                    {skill.name}
-                  </span>
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gray-900 border border-gray-700 flex items-center justify-center mb-2 sm:mb-3 group-hover:bg-gray-800 transition-colors">
+                    <span className="text-cyan-400 font-bold text-base sm:text-lg">{skill.initials}</span>
+                  </div>
+                  <h3 className="text-gray-200 text-[11px] sm:text-xs font-semibold text-center leading-tight mb-1">{skill.name}</h3>
+                  <p className="text-[8px] sm:text-[9px] text-gray-500 font-bold tracking-widest uppercase">{skill.type}</p>
                 </div>
-              ))}
-            </div>
-          </Tilt>
+              </Tilt>
+            ))}
+          </div>
         </div>
       ))}
     </div>

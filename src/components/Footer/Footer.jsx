@@ -47,10 +47,10 @@ const Footer = () => {
               icon: <FaFacebook />,
               link: "https://www.facebook.com/profile.php?id=100017160670039",
             },
-            { icon: <FaGithub />, link: "https://github.com/shakib3444" },
+            { icon: <FaGithub />, link: "https://github.com/shakibKB" },
             {
               icon: <FaLinkedin />,
-              link: "https://www.linkedin.com/in/md-shakib-kabiraz-6208a5298/",
+              link: "https://www.linkedin.com/in/shakib-kb",
             },
             {
               icon: <FaInstagram />,

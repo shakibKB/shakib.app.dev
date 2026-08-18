@@ -36,11 +36,14 @@ const About = () => {
           </h3>
           {/* About Me Paragraph */}
           <p className="text-base sm:text-lg md:text-lg text-gray-400 mb-10 mt-8 leading-relaxed">
-            Passionate Flutter Developer with 1+ years of experience building scalable, high-performance mobile applications. Skilled in Flutter, GetX, WebSocket integration, and real-time features, I am eager to contribute to a dynamic team, deliver innovative solutions, and create impactful user experiences through collaborative development.
+            Flutter Developer with 1+ year of experience building cross-platform mobile applications for Android and iOS using Flutter and Dart.
+Experienced in developing scalable, high-performance applications with clean architecture, REST APIs, Firebase, state management
+(GetX), and third-party integrations. Passionate about writing maintainable code, optimizing application performance, and continuously
+improving backend and system design skills.
           </p>
           {/* Resume Button */}
           <a
-            href="https://drive.google.com/file/d/1o9a3mEHhg4x3KiKfl-G7ttrgdfrAXgxU/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1c1r_txJa5kb_KJ3LtzQOu--lojzpqIYe/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-white py-3 px-8 rounded mt-5 text-lg font-bold transition duration-300 transform hover:scale-105"
