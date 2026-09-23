@@ -34,7 +34,7 @@ const Work = () => {
           <div
             key={project.id}
             data-aos="zoom-in-up"
-            className="bg-[#0a0a0a] border border-gray-800 rounded-3xl p-6 sm:p-8 flex flex-col gap-5 hover:border-gray-600 transition-colors group relative overflow-hidden shadow-[0_0_20px_1px_rgba(130,69,236,0.05)]"
+            className="bg-gray-900 backdrop-blur-md border border-white rounded-3xl p-6 sm:p-8 flex flex-col gap-5 transition-colors group relative overflow-hidden shadow-[0_0_20px_1px_rgba(130,69,236,0.3)]"
           >
             {/* Top row: Icon + Title */}
             <div className="flex items-center gap-4">

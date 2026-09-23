@@ -1,7 +1,7 @@
 import React from "react";
 import ReactTypingEffect from "react-typing-effect";
 import Tilt from "react-parallax-tilt";
-import profileImage from "../../assets/profile.jpg";
+import profileImage from "../../assets/pp.jpg";
 
 const About = () => {
   return (
@@ -24,7 +24,7 @@ const About = () => {
           <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 text-[#8245ec] leading-tight">
             <span className="text-white">I am a </span>
             <ReactTypingEffect
-              text={["Flatter Developer", "Mobile App Developer"]}
+              text={["Flutter Developer", "Mobile App Developer"]}
               speed={100}
               eraseSpeed={50}
               typingDelay={500}

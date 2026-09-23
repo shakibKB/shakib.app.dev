@@ -45,21 +45,21 @@ export const SkillsInfo = [
       
     ]
   },
-  // {
-  //   title: "Tools & Deployment",
-  //   skills: [
-  //     { name: "Git", initials: "GI", type: "TOOLS" },
-  //     { name: "GitHub", initials: "GH", type: "TOOLS" },
-  //     { name: "Android Studio", initials: "AS", type: "IDE" },
-  //     { name: "VS Code", initials: "VS", type: "IDE" },
-  //     { name: "Xcode", initials: "XC", type: "IDE" },
-  //     { name: "Postman", initials: "PO", type: "TOOLS" },
-  //     { name: "Figma", initials: "FG", type: "DESIGN" },
-  //     { name: "Play Console", initials: "PC", type: "DEPLOYMENT" },
-  //     { name: "App Store", initials: "AS", type: "DEPLOYMENT" },
-  //     { name: "TestFlight", initials: "TF", type: "DEPLOYMENT" },
-  //   ]
-  // }
+  {
+    title: "Tools & Deployment",
+    skills: [
+      { name: "Git", initials: "GI", type: "TOOLS" },
+      { name: "GitHub", initials: "GH", type: "TOOLS" },
+      { name: "Android Studio", initials: "AS", type: "IDE" },
+      { name: "VS Code", initials: "VS", type: "IDE" },
+      { name: "Xcode", initials: "XC", type: "IDE" },
+      { name: "Postman", initials: "PO", type: "TOOLS" },
+      { name: "Figma", initials: "FG", type: "DESIGN" },
+      { name: "Play Console", initials: "PC", type: "DEPLOYMENT" },
+      { name: "App Store", initials: "AS", type: "DEPLOYMENT" },
+      { name: "TestFlight", initials: "TF", type: "DEPLOYMENT" },
+    ]
+  }
 ];
 
 //Experience
@@ -201,7 +201,7 @@ export const projects = [
     tags: ["FLUTTER", "FITNESS", "WEBSOCKET"],
     image: omagaLogo,
     playStore: "https://play.google.com/store/apps/details?id=com.alphapulse.omegavitality&pcampaignid=web_share",
-    appStore: null,
+    appStore: "https://apps.apple.com/il/app/alphapulse-fitness/id6751271270",
   },
   {
     id: 4,

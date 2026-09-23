@@ -2,7 +2,6 @@ import React from "react";
 import {
   FaFacebook,
   FaLinkedin,
-  FaInstagram,
   FaGithub,
 } from "react-icons/fa";
 
@@ -51,10 +50,6 @@ const Footer = () => {
             {
               icon: <FaLinkedin />,
               link: "https://www.linkedin.com/in/shakib-kb",
-            },
-            {
-              icon: <FaInstagram />,
-              link: "https://www.instagram.com/shakib_kb?utm_source=qr&igsh=MW0zczZ4cHIzbmN4Yg%3D%3D",
             },
           ].map((item, index) => (
             <a
