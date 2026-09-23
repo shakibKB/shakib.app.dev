@@ -1,120 +1,249 @@
 import { useEffect } from "react";
 import { SkillsInfo } from "../../constants";
-import Tilt from "react-parallax-tilt";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { 
-  SiDart, SiC, SiFlutter, SiFirebase, SiGoogleplay 
+import AOS from "aos";
+import "aos/dist/aos.css";
+import SectionHeader from "../common/SectionHeader";
+import SkillCard from "./SkillCard";
+
+import {
+  SiDart,
+  SiC,
+  SiFlutter,
+  SiFirebase,
+  SiGoogleplay,
+  SiFigma,
+  SiPostman,
+  SiAndroidstudio,
+  SiGit,
+  SiGithub,
+  SiXcode,
+  SiStripe,
+  SiOpenai,
 } from "react-icons/si";
-import { 
-  FaNetworkWired, FaPlug, FaMapMarkerAlt, FaCreditCard, 
-  FaShoppingBag, FaBell, FaRobot, FaDatabase, FaApple, FaCode, FaGithub 
+import {
+  FaNetworkWired,
+  FaPlug,
+  FaMapMarkerAlt,
+  FaShoppingBag,
+  FaBell,
+  FaDatabase,
+  FaApple,
+  FaCode,
 } from "react-icons/fa";
 import { MdDataObject } from "react-icons/md";
+import { VscVscode } from "react-icons/vsc";
 
 const getSkillIcon = (name) => {
-  switch(name) {
-    case "Dart": return <SiDart />;
-    case "C": return <SiC />;
-    case "Flutter": return <SiFlutter />;
-    case "GetX": return <MdDataObject />;
-    case "Restful API": return <FaNetworkWired />;
-    case "Firebase": return <SiFirebase />;
-    case "WebSocket": return <FaPlug />;
-    case "Google Maps": return <FaMapMarkerAlt />;
-    case "Responsive UI": return <FaCode />;
-    case "Custom Widgets": return <FaCode />;
-    case "Payment Gateway": return <FaCreditCard />;
-    case "In-App Purchases": return <FaShoppingBag />;
-    case "Push Notification": return <FaBell />;
-    case "AI APIs": return <FaRobot />;
-    case "Hive": return <FaDatabase />;
-    case "SharedPrefs": return <FaDatabase />;
-    case "Firestore": return <SiFirebase />;
-    case "Google Play Console": return <SiGoogleplay />;
-    case "App Store Connect": return <FaApple />;
-    case "Git": return <FaGithub />;
-    case "GitHub": return <FaGithub />;
-    case "Android Studio": return <FaCode />;
-    case "VS Code": return <FaCode />;
-    case "Xcode": return <FaApple />;
-    case "Postman": return <FaNetworkWired />;
-    case "Figma": return <FaCode />;
-    case "Play Console": return <SiGoogleplay />;
-    case "App Store": return <FaApple />;
-    case "TestFlight": return <FaApple />;
-    default: return <FaCode />;
+  switch (name) {
+    case "Dart":
+      return <SiDart />;
+    case "C":
+      return <SiC />;
+    case "Flutter":
+      return <SiFlutter />;
+    case "GetX":
+      return <MdDataObject />;
+    case "Restful API":
+      return <FaNetworkWired />;
+    case "Firebase":
+      return <SiFirebase />;
+    case "Firestore":
+      return <SiFirebase />;
+    case "WebSocket":
+      return <FaPlug />;
+    case "Google Maps":
+      return <FaMapMarkerAlt />;
+    case "Responsive UI":
+      return <FaCode />;
+    case "Custom Widgets":
+      return <FaCode />;
+    case "Payment Gateway":
+      return <SiStripe />;
+    case "In-App Purchases":
+      return <FaShoppingBag />;
+    case "Push Notification":
+      return <FaBell />;
+    case "AI APIs":
+      return <SiOpenai />;
+    case "Hive":
+    case "SharedPrefs":
+      return <FaDatabase />;
+    case "Google Play Console":
+    case "Play Console":
+      return <SiGoogleplay />;
+    case "App Store Connect":
+    case "App Store":
+    case "TestFlight":
+      return <FaApple />;
+    case "Xcode":
+      return <SiXcode />;
+    case "Git":
+      return <SiGit />;
+    case "GitHub":
+      return <SiGithub />;
+    case "Android Studio":
+      return <SiAndroidstudio />;
+    case "VS Code":
+      return <VscVscode />;
+    case "Postman":
+      return <SiPostman />;
+    case "Figma":
+      return <SiFigma />;
+    default:
+      return <FaCode />;
   }
 };
+
+const CORE_NAMES = new Set([
+  "Flutter",
+  "Dart",
+  "GetX",
+  "Restful API",
+  "Responsive UI",
+  "Custom Widgets",
+]);
 
 const Skills = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1000,
-      offset: 100, 
-      once: false, 
+      duration: 700,
+      offset: 60,
+      once: true,
     });
   }, []);
+
+  // Combine and deduplicate / categorize skills cleanly from constants.js
+  const allSkills = SkillsInfo.flatMap((c) => c.skills);
+
+  const coreSkills = allSkills.filter((s) => CORE_NAMES.has(s.name));
+  const integrationSkills = allSkills.filter(
+    (s) =>
+      !CORE_NAMES.has(s.name) &&
+      !["TOOLS", "IDE", "DESIGN", "DEPLOYMENT"].includes(s.type)
+  );
+  const toolsAndDeployment = allSkills.filter((s) =>
+    ["TOOLS", "IDE", "DESIGN", "DEPLOYMENT"].includes(s.type)
+  );
+
   return (
     <section
-    id="skills"
-    className="py-24 pb-24 px-[3vw] md:px-[7vw] lg:px-[10vw] xl:px-[5vw] font-sans bg-skills-gradient clip-path-custom"
-  >
-    {/* Section Title */}
-    <div className="text-center mb-8">
-      <h2 className="text-3xl sm:text-4xl font-bold text-white">SKILLS</h2>
-      <div className="w-24 h-1 bg-[#8245ec] mx-auto mt-2"></div>
-      <p className="text-gray-400 mt-4 text-lg font-semibold">
-      A collection of my technical skills and expertise honed through various projects and experiences
-      </p>
-    </div>
+      id="skills"
+      aria-label="Technical skills and expertise"
+      className="section-container py-16 sm:py-24 relative"
+    >
+      <SectionHeader
+        eyebrow="Capabilities"
+        title="Skills & Technical Expertise"
+        subtitle="A structured overview of my core mobile architecture stack, cloud & real-time integrations, and platform deployment tools."
+      />
 
-    {/* Skill Categories */}
-    <div className="flex flex-col lg:flex-row gap-8 py-10 justify-center items-stretch max-w-7xl mx-auto">
-      {SkillsInfo.map((category) => (
+      <div className="space-y-12">
+        {/* Tier 1: Core Mobile Architecture (Featured Prominence) */}
         <div
           data-aos="fade-up"
-          key={category.title}
-          className="bg-gray-900/40 backdrop-blur-md px-4 sm:px-8 py-8 w-full flex-1 rounded-3xl border border-gray-700/50 
-          shadow-[0_0_20px_1px_rgba(130,69,236,0.15)] flex flex-col"
+          className="rounded-2xl p-6 sm:p-8 bg-surface-card/80 border border-surface-border backdrop-blur-sm"
         >
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-300 mb-8 text-center tracking-wide">
-            {category.title}
-          </h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {category.skills.map((skill, index) => (
-              <Tilt
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-surface-border gap-2">
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold text-text-primary tracking-tight">
+                Core Mobile Architecture
+              </h3>
+              <p className="text-text-secondary text-xs sm:text-sm mt-1">
+                Primary daily framework, language proficiency, and architectural foundations.
+              </p>
+            </div>
+            <span className="self-start sm:self-auto px-3 py-1 rounded-full bg-brand-500/10 text-brand-300 text-xs font-mono font-medium border border-brand-500/20">
+              Primary Stack
+            </span>
+          </div>
+
+          <div
+            role="list"
+            aria-label="Core mobile architecture skills"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4"
+          >
+            {coreSkills.map((skill) => (
+              <SkillCard
                 key={skill.name}
-                tiltMaxAngleX={15}
-                tiltMaxAngleY={15}
-                perspective={1000}
-                scale={1.05}
-                transitionSpeed={1000}
-                gyroscope={true}
-                className="w-fit"
-              >
-                <div
-                  data-aos="zoom-in-up"
-                  data-aos-delay={(index % 10) * 50}
-                  className="w-auto px-3 py-1.5 sm:px-4 sm:py-2 bg-[#0a0a0a] border border-gray-800 rounded-xl flex flex-row items-center gap-2 
-                  hover:border-[#8245ec] hover:shadow-[0_0_15px_1px_rgba(130,69,236,0.4)] transition-all duration-300 group cursor-pointer"
-                >
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-gray-900 border border-gray-700 flex items-center justify-center shrink-0 group-hover:bg-gray-800 transition-colors">
-                    <span className="text-cyan-400 text-sm sm:text-base">{getSkillIcon(skill.name)}</span>
-                  </div>
-                  <div className="flex flex-col text-left">
-                    <h3 className="text-gray-200 text-[11px] sm:text-[12px] font-semibold leading-tight">{skill.name}</h3>
-                    <p className="text-[7px] sm:text-[8px] text-gray-500 font-bold tracking-widest uppercase mt-0.5">{skill.type}</p>
-                  </div>
-                </div>
-              </Tilt>
+                name={skill.name}
+                type={skill.type}
+                icon={getSkillIcon(skill.name)}
+                isFeatured={true}
+              />
             ))}
           </div>
         </div>
-      ))}
-    </div>
-  </section>
+
+        {/* 2-Column Split: Integrations & Tooling */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          {/* Tier 2: Real-Time, Cloud & Integrations */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="rounded-2xl p-6 sm:p-8 bg-surface-card/60 border border-surface-border backdrop-blur-sm flex flex-col"
+          >
+            <div className="pb-5 mb-5 border-b border-surface-border">
+              <h3 className="text-lg sm:text-xl font-bold text-text-primary tracking-tight">
+                Backend, Cloud & Integrations
+              </h3>
+              <p className="text-text-secondary text-xs sm:text-sm mt-1">
+                Real-time communications, persistence, push notifications, and monetization.
+              </p>
+            </div>
+
+            <div
+              role="list"
+              aria-label="Backend and integration skills"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-auto"
+            >
+              {integrationSkills.map((skill) => (
+                <SkillCard
+                  key={skill.name}
+                  name={skill.name}
+                  type={skill.type}
+                  icon={getSkillIcon(skill.name)}
+                  isFeatured={false}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Tier 3: Platform Delivery & Developer Tools */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="150"
+            className="rounded-2xl p-6 sm:p-8 bg-surface-card/60 border border-surface-border backdrop-blur-sm flex flex-col"
+          >
+            <div className="pb-5 mb-5 border-b border-surface-border">
+              <h3 className="text-lg sm:text-xl font-bold text-text-primary tracking-tight">
+                Platform Delivery & Tools
+              </h3>
+              <p className="text-text-secondary text-xs sm:text-sm mt-1">
+                Store management, native build tooling, version control, and API testing.
+              </p>
+            </div>
+
+            <div
+              role="list"
+              aria-label="Platform delivery and tools"
+              className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-auto"
+            >
+              {toolsAndDeployment.map((skill) => (
+                <SkillCard
+                  key={skill.name}
+                  name={skill.name}
+                  type={skill.type}
+                  icon={getSkillIcon(skill.name)}
+                  isFeatured={false}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
 export default Skills;
+

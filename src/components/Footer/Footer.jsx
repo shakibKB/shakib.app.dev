@@ -1,12 +1,33 @@
-import React from "react";
-import {
-  FaFacebook,
-  FaLinkedin,
-  FaGithub,
-} from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaGithub } from "react-icons/fa";
+
+const FOOTER_NAV = [
+  { name: "About", id: "about" },
+  { name: "Projects", id: "work" },
+  { name: "Skills", id: "skills" },
+  { name: "Experience", id: "experience" },
+  { name: "Education", id: "education" },
+  { name: "Contact", id: "contact" },
+];
+
+const FOOTER_SOCIALS = [
+  {
+    icon: FaGithub,
+    link: "https://github.com/shakibKB",
+    label: "GitHub Profile",
+  },
+  {
+    icon: FaLinkedin,
+    link: "https://www.linkedin.com/in/shakib-kb",
+    label: "LinkedIn Profile",
+  },
+  {
+    icon: FaFacebook,
+    link: "https://www.facebook.com/profile.php?id=100017160670039",
+    label: "Facebook Profile",
+  },
+];
 
 const Footer = () => {
-  // Smooth scroll function
   const handleScroll = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -15,58 +36,52 @@ const Footer = () => {
   };
 
   return (
-    <footer className="text-white py-8 px-[12vw] md:px-[7vw] lg:px-[20vw]">
-      <div className="container mx-auto text-center">
-        {/* Name / Logo */}
-        <h2 className="text-xl font-semibold text-purple-500">Shakib Kabiraz</h2>
+    <footer className="border-t border-surface-border bg-surface-canvas py-12">
+      <div className="section-container flex flex-col items-center text-center">
+        {/* Name / Brand */}
+        <p className="text-lg font-bold text-text-primary tracking-tight">
+          Shakib <span className="text-brand-400 font-normal">Kabiraz</span>
+        </p>
+        <p className="text-xs text-text-muted mt-1 font-mono">
+          Flutter & Mobile Application Developer
+        </p>
 
-        {/* Navigation Links - Responsive */}
-        <nav className="flex flex-wrap justify-center space-x-4 sm:space-x-6 mt-4">
-          {[
-            { name: "About", id: "about" },
-            { name: "Skills", id: "skills" },
-            { name: "Experience", id: "experience" },
-            { name: "Projects", id: "projects" },
-            { name: "Education", id: "education" },
-          ].map((item, index) => (
+        {/* Navigation Links */}
+        <nav aria-label="Footer navigation" className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-6">
+          {FOOTER_NAV.map((item) => (
             <button
-              key={index}
+              key={item.id}
+              type="button"
               onClick={() => handleScroll(item.id)}
-              className="hover:text-purple-500 text-sm sm:text-base my-1"
+              className="text-text-secondary hover:text-brand-300 text-xs sm:text-sm font-medium transition-colors"
             >
               {item.name}
             </button>
           ))}
         </nav>
 
-        {/* Social Media Icons - Responsive */}
-        <div className="flex flex-wrap justify-center space-x-4 mt-6">
-          {[
-            {
-              icon: <FaFacebook />,
-              link: "https://www.facebook.com/profile.php?id=100017160670039",
-            },
-            { icon: <FaGithub />, link: "https://github.com/shakibKB" },
-            {
-              icon: <FaLinkedin />,
-              link: "https://www.linkedin.com/in/shakib-kb",
-            },
-          ].map((item, index) => (
-            <a
-              key={index}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xl hover:text-purple-500 transition-transform transform hover:scale-110"
-            >
-              {item.icon}
-            </a>
-          ))}
+        {/* Social Media Links */}
+        <div className="flex items-center space-x-4 mt-6">
+          {FOOTER_SOCIALS.map((social, index) => {
+            const Icon = social.icon;
+            return (
+              <a
+                key={index}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="w-9 h-9 rounded-lg bg-surface-card border border-surface-border hover:border-brand-500/40 text-text-secondary hover:text-brand-300 flex items-center justify-center transition-all active:scale-95"
+              >
+                <Icon size={16} />
+              </a>
+            );
+          })}
         </div>
 
-        {/* Copyright Text */}
-        <p className="text-sm text-gray-400 mt-6">
-          © 2025 Shakib Kabiraz. All rights reserved.
+        {/* Copyright */}
+        <p className="text-xs text-text-muted mt-8">
+          © {new Date().getFullYear()} Shakib Kabiraz. Built with React & Tailwind CSS.
         </p>
       </div>
     </footer>
@@ -74,3 +89,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

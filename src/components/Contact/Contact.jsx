@@ -1,15 +1,20 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FaCopy, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import { FaCopy, FaEnvelope, FaPhoneAlt, FaCheck } from "react-icons/fa";
+import SectionHeader from "../common/SectionHeader";
 
 const Contact = () => {
   const form = useRef();
-  const [isSent, setIsSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [copiedType, setCopiedType] = useState(null);
 
   const handleCopy = (text, type) => {
     navigator.clipboard.writeText(text);
+    setCopiedType(type);
+    setTimeout(() => setCopiedType(null), 2500);
+
     toast.success(`${type} copied to clipboard! 📋`, {
       position: "top-right",
       autoClose: 2000,
@@ -19,18 +24,19 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     emailjs
       .sendForm(
-        "service_vtroy0n",  // Replace with your EmailJS Service ID
-        "template_3jjnk8i",  // Replace with your EmailJS Template ID
+        "service_vtroy0n",
+        "template_3jjnk8i",
         form.current,
-        "cAxiVXL4rVCc8rJoo"  // Replace with your EmailJS Public Key
+        "cAxiVXL4rVCc8rJoo"
       )
       .then(
         () => {
-          setIsSent(true);
-          form.current.reset(); // Reset form fields after sending
+          setIsSubmitting(false);
+          form.current.reset();
           toast.success("Message sent successfully! ✅", {
             position: "top-right",
             autoClose: 3000,
@@ -42,6 +48,7 @@ const Contact = () => {
           });
         },
         (error) => {
+          setIsSubmitting(false);
           console.error("Error sending message:", error);
           toast.error("Failed to send message. Please try again.", {
             position: "top-right",
@@ -59,115 +66,165 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="flex flex-col items-center justify-center py-24 px-[3vw] md:px-[7vw] lg:px-[20vw]"
+      aria-label="Contact and inquiries"
+      className="section-container py-16 sm:py-24 relative"
     >
-      {/* Toast Container */}
       <ToastContainer />
 
-      {/* Section Title */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-white">CONTACT</h2>
-        <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
-        <p className="text-gray-400 mt-4 text-lg font-semibold">
-          I’d love to hear from you—reach out for any opportunities or questions!
-        </p>
-      </div>
+      <SectionHeader
+        eyebrow="Get In Touch"
+        title="Contact & Direct Inquiries"
+        subtitle="Have a mobile app project, full-time role, or contract inquiry? Reach out directly or send a message below."
+      />
 
-      {/* Content Wrapper */}
-      <div className="flex flex-col md:flex-row gap-8 w-full max-w-5xl">
+      <div className="flex flex-col lg:flex-row gap-8 max-w-5xl mx-auto items-stretch">
         {/* Direct Contact Info */}
-        <div className="flex-1 bg-[#0d081f] p-8 rounded-2xl shadow-[0_0_20px_1px_rgba(130,69,236,0.1)] border border-gray-700 flex flex-col gap-6">
+        <div className="flex-1 bg-surface-card p-6 sm:p-8 rounded-2xl border border-surface-border flex flex-col justify-between gap-6 shadow-sm">
           <div>
-            <h3 className="text-2xl font-semibold text-white mb-2">
-              Direct Inquiries
+            <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-2 tracking-tight">
+              Direct Contact
             </h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Feel free to send a note directly to my inbox or give me a call.
+            <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
+              Prefer direct communication? Click to copy my email or phone number anytime.
             </p>
           </div>
 
-          {/* Email Box */}
-          <div className="bg-[#131025] border border-gray-700 rounded-xl p-4 flex items-center justify-between group hover:border-purple-500 transition-colors">
-            <div className="flex items-center gap-4">
-              <div className="bg-purple-900/30 p-3 rounded-lg text-purple-400">
-                <FaEnvelope className="text-xl" />
+          <div className="space-y-4 my-auto">
+            {/* Email Box */}
+            <div className="bg-surface-elevated border border-surface-border rounded-xl p-4 flex items-center justify-between group hover:border-brand-500/40 transition-colors">
+              <div className="flex items-center gap-3.5 min-w-0">
+                <div className="w-10 h-10 rounded-lg bg-brand-500/10 border border-brand-500/20 text-brand-400 flex items-center justify-center shrink-0">
+                  <FaEnvelope className="text-lg" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-text-muted text-[10px] font-semibold tracking-wider uppercase">
+                    Primary Email
+                  </p>
+                  <p className="text-text-primary text-xs sm:text-sm font-mono truncate">
+                    shakib.app.dev@gmail.com
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-gray-500 text-xs font-semibold tracking-wider uppercase mb-1">Primary Email</p>
-                <p className="text-white text-sm sm:text-base font-mono">shakib.app.dev@gmail.com</p>
-              </div>
+              <button
+                type="button"
+                onClick={() => handleCopy("shakib.app.dev@gmail.com", "Email")}
+                aria-label="Copy primary email to clipboard"
+                className="p-2.5 rounded-lg bg-surface-card border border-surface-border hover:border-brand-400 text-text-muted hover:text-text-primary transition-all active:scale-95 shrink-0 ml-2"
+                title="Copy Email"
+              >
+                {copiedType === "Email" ? (
+                  <FaCheck className="text-emerald-400 text-sm" />
+                ) : (
+                  <FaCopy className="text-sm" />
+                )}
+              </button>
             </div>
-            <button
-              onClick={() => handleCopy("shakib.app.dev@gmail.com", "Email")}
-              className="p-3 bg-[#0d081f] border border-gray-600 rounded-lg text-gray-400 hover:text-white hover:border-purple-400 transition-all active:scale-95"
-              title="Copy Email"
-            >
-              <FaCopy />
-            </button>
+
+            {/* Phone Box */}
+            <div className="bg-surface-elevated border border-surface-border rounded-xl p-4 flex items-center justify-between group hover:border-brand-500/40 transition-colors">
+              <div className="flex items-center gap-3.5 min-w-0">
+                <div className="w-10 h-10 rounded-lg bg-brand-500/10 border border-brand-500/20 text-brand-400 flex items-center justify-center shrink-0">
+                  <FaPhoneAlt className="text-lg" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-text-muted text-[10px] font-semibold tracking-wider uppercase">
+                    Phone Number
+                  </p>
+                  <p className="text-text-primary text-xs sm:text-sm font-mono truncate">
+                    +8801405120644
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => handleCopy("+8801405120644", "Phone Number")}
+                aria-label="Copy phone number to clipboard"
+                className="p-2.5 rounded-lg bg-surface-card border border-surface-border hover:border-brand-400 text-text-muted hover:text-text-primary transition-all active:scale-95 shrink-0 ml-2"
+                title="Copy Phone Number"
+              >
+                {copiedType === "Phone Number" ? (
+                  <FaCheck className="text-emerald-400 text-sm" />
+                ) : (
+                  <FaCopy className="text-sm" />
+                )}
+              </button>
+            </div>
           </div>
 
-          {/* Phone Box */}
-          <div className="bg-[#131025] border border-gray-700 rounded-xl p-4 flex items-center justify-between group hover:border-purple-500 transition-colors mt-2">
-            <div className="flex items-center gap-4">
-              <div className="bg-purple-900/30 p-3 rounded-lg text-purple-400">
-                <FaPhoneAlt className="text-xl" />
-              </div>
-              <div>
-                <p className="text-gray-500 text-xs font-semibold tracking-wider uppercase mb-1">Phone Number</p>
-                <p className="text-white text-sm sm:text-base font-mono">+8801405120644</p>
-              </div>
-            </div>
-            <button
-              onClick={() => handleCopy("+8801405120644", "Phone Number")}
-              className="p-3 bg-[#0d081f] border border-gray-600 rounded-lg text-gray-400 hover:text-white hover:border-purple-400 transition-all active:scale-95"
-              title="Copy Phone Number"
-            >
-              <FaCopy />
-            </button>
+          <div className="p-4 rounded-xl bg-surface-elevated/50 border border-surface-border text-xs text-text-muted">
+            📍 Based in Bangladesh • Open to remote worldwide and on-site opportunities.
           </div>
         </div>
 
         {/* Contact Form */}
-        <div className="flex-1 bg-[#0d081f] p-8 rounded-2xl shadow-[0_0_20px_1px_rgba(130,69,236,0.1)] border border-gray-700">
-          <h3 className="text-2xl font-semibold text-white mb-6">
-            Send a Message <span className="ml-1">🚀</span>
+        <div className="flex-1 bg-surface-card p-6 sm:p-8 rounded-2xl border border-surface-border shadow-sm">
+          <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-6 tracking-tight">
+            Send a Message
           </h3>
 
           <form ref={form} onSubmit={sendEmail} className="flex flex-col space-y-4">
-            <input
-              type="email"
-              name="user_email"
-              placeholder="Your Email"
-              required
-              className="w-full p-4 rounded-xl bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500 transition-colors"
-            />
-            <input
-              type="text"
-              name="user_name"
-              placeholder="Your Name"
-              required
-              className="w-full p-4 rounded-xl bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500 transition-colors"
-            />
-            <input
-              type="text"
-              name="subject"
-              placeholder="Subject"
-              required
-              className="w-full p-4 rounded-xl bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500 transition-colors"
-            />
-            <textarea
-              name="message"
-              placeholder="Message"
-              rows="4"
-              required
-              className="w-full p-4 rounded-xl bg-[#131025] text-white border border-gray-600 focus:outline-none focus:border-purple-500 transition-colors resize-none"
-            />
-            
+            <div>
+              <label htmlFor="user_name" className="sr-only">
+                Your Name
+              </label>
+              <input
+                id="user_name"
+                type="text"
+                name="user_name"
+                placeholder="Your Name"
+                required
+                className="w-full p-3.5 rounded-xl bg-surface-elevated text-text-primary placeholder:text-text-muted border border-surface-border focus:outline-none focus:border-brand-400 focus:ring-1 focus:ring-brand-400 text-sm transition-colors"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="user_email" className="sr-only">
+                Your Email
+              </label>
+              <input
+                id="user_email"
+                type="email"
+                name="user_email"
+                placeholder="Your Email"
+                required
+                className="w-full p-3.5 rounded-xl bg-surface-elevated text-text-primary placeholder:text-text-muted border border-surface-border focus:outline-none focus:border-brand-400 focus:ring-1 focus:ring-brand-400 text-sm transition-colors"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="subject" className="sr-only">
+                Subject
+              </label>
+              <input
+                id="subject"
+                type="text"
+                name="subject"
+                placeholder="Subject"
+                required
+                className="w-full p-3.5 rounded-xl bg-surface-elevated text-text-primary placeholder:text-text-muted border border-surface-border focus:outline-none focus:border-brand-400 focus:ring-1 focus:ring-brand-400 text-sm transition-colors"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="message" className="sr-only">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Tell me about your project or opportunity..."
+                rows="4"
+                required
+                className="w-full p-3.5 rounded-xl bg-surface-elevated text-text-primary placeholder:text-text-muted border border-surface-border focus:outline-none focus:border-brand-400 focus:ring-1 focus:ring-brand-400 text-sm transition-colors resize-none"
+              />
+            </div>
+
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-purple-600 to-pink-500 py-4 text-white font-bold rounded-xl hover:opacity-90 transition-opacity mt-2 shadow-lg shadow-purple-500/20"
+              disabled={isSubmitting}
+              className="w-full py-3.5 px-6 rounded-xl bg-brand-500 hover:bg-brand-600 disabled:opacity-50 text-white font-semibold text-sm transition-all shadow-md shadow-brand-500/25 active:scale-98 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-surface-canvas mt-2"
             >
-              Send Message
+              {isSubmitting ? "Sending Message..." : "Send Message"}
             </button>
           </form>
         </div>
@@ -177,3 +234,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

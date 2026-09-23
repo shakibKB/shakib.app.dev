@@ -1,17 +1,13 @@
 // Experience Section Logo's
 import webverseLogo from "./assets/componylogo.jpeg";
-import newtonschoolLogo from "./assets/critiveit.png";
 import smtLogo from "./assets/smt.jpg";
 
 // Education Section Logo's
 import glaLogo from "./assets/barguna.jpg";
-import bsaLogo from "./assets/philipnagor.jpeg";
 import cubLogo from "./assets/cub.png";
 
 // Project Section Logo's
 import githubdetLogo from "./assets/work_logo/wingsblast.jpeg";
-import csprepLogo from "./assets/work_logo/fourproject.jpeg";
-import npmLogo from "./assets/work_logo/thirdproject.jpeg";
 import webverLogo from "./assets/work_logo/abs.jpeg";
 import mentorLogo from "./assets/work_logo/mu.png";
 import omagaLogo from "./assets/work_logo/omaga.png";
