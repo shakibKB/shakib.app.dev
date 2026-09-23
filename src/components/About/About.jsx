@@ -55,12 +55,7 @@ const About = () => {
 
           {/* Value Proposition & Bio Text (Preserved Content) */}
           <p className="text-text-secondary text-sm sm:text-base leading-relaxed max-w-2xl mt-5">
-            Flutter Developer with 1+ year of experience building cross-platform mobile applications
-            for Android and iOS using Flutter and Dart. Experienced in developing scalable,
-            high-performance applications with clean architecture, REST APIs, Firebase, state
-            management (GetX), and third-party integrations. Passionate about writing maintainable
-            code, optimizing application performance, and continuously improving backend and system
-            design skills.
+            Flutter Developer with nearly 2 years of professional experience building cross-platform mobile applications for Android and iOS using Flutter and Dart. Experienced in developing scalable, high-performance applications with clean architecture, REST APIs, Firebase, state management (GetX), and third-party integrations. Passionate about writing maintainable code, optimizing application performance, and continuously improving software engineering and system design skills.
           </p>
 
           {/* Quick Metrics Proof Strip */}
@@ -70,7 +65,7 @@ const About = () => {
               <span className="text-xs text-text-muted font-medium">Shipped Apps</span>
             </div>
             <div className="text-center lg:text-left border-x border-surface-border px-2 sm:px-4">
-              <span className="block text-xl sm:text-2xl font-bold text-brand-400 font-mono">1+ Yr</span>
+              <span className="block text-xl sm:text-2xl font-bold text-brand-400 font-mono">2 Yrs</span>
               <span className="text-xs text-text-muted font-medium">Commercial Exp</span>
             </div>
             <div className="text-center lg:text-left">
@@ -139,7 +134,7 @@ const About = () => {
                     <SiFlutter className="text-base" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-text-primary">Flutter Specialist</p>
+                    <p className="text-xs font-bold text-text-primary">Flutter Developer</p>
                     <p className="text-[10px] text-text-muted font-mono">Cross-Platform Apps</p>
                   </div>
                 </div>
