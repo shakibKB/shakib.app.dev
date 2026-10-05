@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 const TimelineCard = ({
   title,
   subtitle,
+  location,
   date,
   description,
   image,
@@ -63,6 +64,11 @@ const TimelineCard = ({
             <p className="text-sm font-medium text-text-secondary mt-0.5">
               {subtitle}
             </p>
+            {location && (
+              <p className="text-xs text-text-muted mt-0.5">
+                {location}
+              </p>
+            )}
           </div>
         </div>
 
@@ -108,6 +114,7 @@ const TimelineCard = ({
 TimelineCard.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
+  location: PropTypes.string,
   date: PropTypes.string.isRequired,
   description: PropTypes.string,
   image: PropTypes.string.isRequired,

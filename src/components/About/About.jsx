@@ -55,7 +55,7 @@ const About = () => {
 
           {/* Value Proposition & Bio Text (Preserved Content) */}
           <p className="text-text-secondary text-sm sm:text-base leading-relaxed max-w-2xl mt-5">
-            Flutter Developer with nearly 2 years of professional experience building cross-platform mobile applications for Android and iOS using Flutter and Dart. Experienced in developing scalable, high-performance applications with clean architecture, REST APIs, Firebase, state management (GetX), and third-party integrations. Passionate about writing maintainable code, optimizing application performance, and continuously improving software engineering and system design skills.
+            Flutter Developer with nearly 2+ years of professional experience building cross-platform mobile applications for Android and iOS using Flutter and Dart. Experienced in developing scalable, high-performance applications with clean architecture, REST APIs, Firebase, state management (GetX), and third-party integrations. Passionate about writing maintainable code, optimizing application performance, and continuously improving software engineering and system design skills.
           </p>
 
           {/* Quick Metrics Proof Strip */}
@@ -65,7 +65,7 @@ const About = () => {
               <span className="text-xs text-text-muted font-medium">Shipped Apps</span>
             </div>
             <div className="text-center lg:text-left border-x border-surface-border px-2 sm:px-4">
-              <span className="block text-xl sm:text-2xl font-bold text-brand-400 font-mono">2 Yrs</span>
+              <span className="block text-xl sm:text-2xl font-bold text-brand-400 font-mono">2+ Yrs</span>
               <span className="text-xs text-text-muted font-medium">Commercial Exp</span>
             </div>
             <div className="text-center lg:text-left">
@@ -86,7 +86,7 @@ const About = () => {
             </a>
 
             <a
-              href="https://drive.google.com/file/d/1c1r_txJa5kb_KJ3LtzQOu--lojzpqIYe/view?usp=sharing"
+              href="https://drive.google.com/file/d/1KoVS4eJy4VRMu_47ku1UAdtCNFSivqXd/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-surface-card hover:bg-surface-elevated text-text-primary border border-surface-border hover:border-surface-borderHover font-semibold text-sm sm:text-base transition-all active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-surface-canvas"
@@ -121,8 +121,8 @@ const About = () => {
                   loading="eager"
                   fetchPriority="high"
                 />
-                <div 
-                  aria-hidden="true" 
+                <div
+                  aria-hidden="true"
                   className="absolute inset-0 bg-gradient-to-t from-surface-canvas/80 via-transparent to-transparent opacity-60"
                 />
               </div>

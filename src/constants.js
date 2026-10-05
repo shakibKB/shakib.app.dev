@@ -64,9 +64,10 @@ export const experiences = [
   {
     id: 0,
     img: smtLogo,
-    role: "Junior Flutter Developer",
+    role: "Executive, Mobile App",
     company: "SM Technology",
-    date: "June 2025 - Present",
+    location: "Banasree, Dhaka",
+    date: "Jun 2025 - Present",
     desc: "I am currently working as a Junior App Developer at SM Technology, where I develop mobile applications and gain real-world industry experience. I collaborate with designers and backend developers to build scalable features and ensure smooth user experiences. I also communicate with clients to understand requirements and deliver solutions that align with business goals and product quality.",
     skills: [
       "Dart(OOP)",
@@ -85,8 +86,9 @@ export const experiences = [
     id: 1,
     img: webverseLogo,
     role: "Junior Flutter Developer",
-    company: "All One Autos",
-    date: "December 2024 - June 2025",
+    company: "Alloneautos",
+    location: "Dhaka, Bangladesh",
+    date: "Sep 2024 - May 2025",
     desc: "As a Junior App Developer, I create mobile apps, collaborate with senior developers, write clean code, participate in code reviews, assist in feature design, and enhance development processes with a focus on user experience and brand consistency.",
     skills: [
       "Dart(OOP)",

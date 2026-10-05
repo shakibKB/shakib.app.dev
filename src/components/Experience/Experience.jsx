@@ -36,6 +36,7 @@ const Experience = () => {
               key={experience.id}
               title={experience.role}
               subtitle={experience.company}
+              location={experience.location}
               date={experience.date}
               description={experience.desc}
               image={experience.img}
