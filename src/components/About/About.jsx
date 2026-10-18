@@ -86,7 +86,7 @@ const About = () => {
             </a>
 
             <a
-              href="https://drive.google.com/file/d/1KoVS4eJy4VRMu_47ku1UAdtCNFSivqXd/view?usp=sharing"
+              href="https://drive.google.com/file/d/1z8S4QLABRd-cdqBdyhIx17izvS0tH8aN/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-surface-card hover:bg-surface-elevated text-text-primary border border-surface-border hover:border-surface-borderHover font-semibold text-sm sm:text-base transition-all active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-surface-canvas"
